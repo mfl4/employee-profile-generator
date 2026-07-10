@@ -1,14 +1,15 @@
 # employee-profile-generator
 
-A small Python workshop project from the **Python Basics** course. This folder
-contains a hands-on exercise that focuses on **strings**: concatenation,
-compound assignment, type conversion, f-strings, and string slicing.
+A lightweight Python utility that assembles employee profiles from raw data and
+extracts structured fields from an employee code. It builds a readable profile
+line and an employee card from separate pieces of text and numbers, then parses
+an employee code into its department, year, initials, and sequence number.
 
 ## Contents
 
 | File           | Description                                                     |
 | -------------- | --------------------------------------------------------------- |
-| `main.py`      | The sample program that builds and slices employee profiles.    |
+| `main.py`      | The program that builds employee profiles and parses codes.     |
 | `LICENSE`      | CC0 1.0 Universal public domain dedication.                     |
 | `.gitignore`   | Standard Python ignore rules for version control.               |
 
@@ -21,10 +22,11 @@ compound assignment, type conversion, f-strings, and string slicing.
    python main.py
    ```
 
-## What `main.py` does
+## How it works
 
 The script assembles employee information from separate pieces of text and
-numbers, then extracts parts of an employee code using slicing.
+numbers, formats an employee card, and extracts parts of an employee code using
+slicing.
 
 ```python
 first_name = 'John'
@@ -55,7 +57,7 @@ last_three = employee_code[-3:]
 print(last_three)
 ```
 
-### Key concepts
+### Techniques used
 
 - **Concatenation** (`+`): joins strings, e.g. `first_name + ' ' + last_name`
   produces `'John Doe'`.
@@ -68,16 +70,17 @@ print(last_three)
 - **Slicing** (`[start:stop]`): extracts a substring by index. `stop` is
   exclusive, and negative indexes count from the end.
 
-### String slicing breakdown
+### Employee code format
 
-For `employee_code = 'DEV-2026-JD-001'`:
+The employee code follows the pattern `DEPT-YEAR-INITIALS-SEQUENCE`. For
+`employee_code = 'DEV-2026-JD-001'`:
 
-| Index positions | Slice              | Result   |
+| Index positions | Field              | Result   |
 | --------------- | ------------------ | -------- |
 | `[0:3]`         | department         | `DEV`    |
-| `[4:8]`         | year code          | `2026`   |
+| `[4:8]`         | year               | `2026`   |
 | `[9:11]`        | initials           | `JD`     |
-| `[-3:]`         | last three chars   | `001`    |
+| `[-3:]`         | sequence number    | `001`    |
 
 ## Expected output
 
@@ -91,7 +94,7 @@ JD
 001
 ```
 
-## Learning goals
+## Key concepts
 
 - Combine strings using concatenation and the `+=` operator.
 - Convert numbers to strings with `str()` before joining them.

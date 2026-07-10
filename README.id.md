@@ -1,15 +1,16 @@
 # employee-profile-generator
 
-Sebuah proyek workshop Python kecil dari kursus **Dasar-Dasar Python**. Folder
-ini berisi latihan praktis yang berfokus pada **string**: penggabungan
-(concatenation), compound assignment, konversi tipe, f-string, dan pemotongan
-string (slicing).
+Utilitas Python ringan yang menyusun profil karyawan dari data mentah dan
+mengekstrak field terstruktur dari sebuah kode karyawan. Program ini membangun
+baris profil yang mudah dibaca serta kartu karyawan dari potongan teks dan angka
+yang terpisah, lalu mengurai kode karyawan menjadi departemen, tahun, inisial,
+dan nomor urut.
 
 ## Isi Folder
 
 | Berkas          | Keterangan                                                    |
 | --------------- | ------------------------------------------------------------- |
-| `main.py`       | Program contoh yang menyusun dan memotong profil karyawan.    |
+| `main.py`       | Program yang menyusun profil karyawan dan mengurai kode.      |
 | `LICENSE`       | Dedikasi domain publik CC0 1.0 Universal.                     |
 | `.gitignore`    | Aturan abaikan standar Python untuk version control.          |
 
@@ -22,10 +23,11 @@ string (slicing).
    python main.py
    ```
 
-## Apa yang Dilakukan `main.py`
+## Cara Kerja
 
 Skrip ini menyusun informasi karyawan dari potongan teks dan angka yang
-terpisah, lalu mengambil bagian-bagian dari kode karyawan menggunakan slicing.
+terpisah, memformat kartu karyawan, lalu mengambil bagian-bagian dari kode
+karyawan menggunakan slicing.
 
 ```python
 first_name = 'John'
@@ -56,7 +58,7 @@ last_three = employee_code[-3:]
 print(last_three)
 ```
 
-### Konsep Utama
+### Teknik yang Digunakan
 
 - **Penggabungan** (`+`): menyatukan string, misalnya `first_name + ' ' + last_name`
   menghasilkan `'John Doe'`.
@@ -69,16 +71,17 @@ print(last_three)
 - **Slicing** (`[start:stop]`): mengambil sebagian string berdasarkan indeks.
   Nilai `stop` bersifat eksklusif, dan indeks negatif dihitung dari belakang.
 
-### Rincian Slicing String
+### Format Kode Karyawan
 
-Untuk `employee_code = 'DEV-2026-JD-001'`:
+Kode karyawan mengikuti pola `DEPT-TAHUN-INISIAL-URUTAN`. Untuk
+`employee_code = 'DEV-2026-JD-001'`:
 
-| Posisi indeks   | Slice               | Hasil    |
+| Posisi indeks   | Field               | Hasil    |
 | --------------- | ------------------- | -------- |
 | `[0:3]`         | departemen          | `DEV`    |
-| `[4:8]`         | kode tahun          | `2026`   |
+| `[4:8]`         | tahun               | `2026`   |
 | `[9:11]`        | inisial             | `JD`     |
-| `[-3:]`         | tiga karakter akhir | `001`    |
+| `[-3:]`         | nomor urut          | `001`    |
 
 ## Output yang Diharapkan
 
@@ -92,7 +95,7 @@ JD
 001
 ```
 
-## Tujuan Pembelajaran
+## Konsep Utama
 
 - Menggabungkan string menggunakan concatenation dan operator `+=`.
 - Mengonversi angka menjadi string dengan `str()` sebelum menggabungkannya.
